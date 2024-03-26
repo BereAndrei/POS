@@ -16,14 +16,29 @@ namespace app1
             serviciuMgr.ReadElemente(nrServicii);
             serviciuMgr.Write2console();
 
-
+            /*
             Console.WriteLine("Cauta un Produs");
             Produs pr = ProduseMgr.ReadUnProdus();
             ProdusAbstract? contine = ProduseAbstractMgr.Contine(pr);
-            if (contine != null)
-            {
+            if (contine is not null)
                 Console.WriteLine("Contine " + contine.ToString());
+            else
+                Console.WriteLine("Nu contine " + pr.ToString());
+            */
+
+            Console.WriteLine("Cauta Produse/servicii dupa nume ");
+            string? nume = Console.ReadLine();
+            ProdusAbstract?[] gasite = ProduseAbstractMgr.Cautare_nume(nume);
+            if (gasite.Length > 0)
+            {
+                for (int i = 0; i < gasite.Length; i++)
+                    {
+                        ProdusAbstract gasit = gasite[i];
+                        Console.WriteLine("Contine " + gasit.ToString());
+                    }
             }
+            else
+                Console.WriteLine("Nu contine " + nume);
         }
     }
 }

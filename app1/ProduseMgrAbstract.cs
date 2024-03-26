@@ -3,25 +3,19 @@ namespace app1
 {
     public abstract class ProduseAbstractMgr
     {
-        protected static ProdusAbstract[] elemente = new ProdusAbstract[100];
+        protected const uint MAX_PRODUSE_ABSTRACTE = 100;
+        protected static ProdusAbstract[] elemente = new ProdusAbstract[MAX_PRODUSE_ABSTRACTE];
         protected static int CountElemente { get; set; } = 0;
-
         public ProduseAbstractMgr() { }
-
-
-        
         public bool compareToArray(ProdusAbstract other)
         {
             for (int i = 0; i < ProduseAbstractMgr.CountElemente; i++)
             {
-                if (ProduseAbstractMgr.elemente[i].Equals(other))
+                if (ProduseAbstractMgr.elemente[i]==other)
                     return true;
             }
             return false;
         }
-
-       
-
         public abstract ProdusAbstract ReadElement(uint number);
 
         public void ReadElemente(uint count)
@@ -39,7 +33,7 @@ namespace app1
             }
         }
 
-        public static ProdusAbstract Contine(ProdusAbstract other)
+        public static ProdusAbstract? Contine(ProdusAbstract other)
         {
             for (int i = 0; i < ProduseAbstractMgr.CountElemente; i++)
             {
@@ -49,21 +43,26 @@ namespace app1
             return null;
         }
 
-        public static ProdusAbstract[] Continee(ProdusAbstract other)
+        public static ProdusAbstract[] Cautare_nume(string? numep)
         {
-            ProdusAbstract[] produse = new ProdusAbstract[100];
+            ProdusAbstract[] produse = new ProdusAbstract[MAX_PRODUSE_ABSTRACTE];
             int counter = 0;
             for (int i = 0; i < ProduseAbstractMgr.CountElemente; i++)
                 {
-                    if (ProduseAbstractMgr.elemente[i].Equals(other))
+                    if (ProduseAbstractMgr.elemente[i].Nume == numep)
                     {
                     produse[counter] = elemente[i];
                     counter++;
                     }
                 }
-            return produse;
+            ProdusAbstract[] returned = new ProdusAbstract[counter];
+            for (int i = 0; i < counter; i++)
+            {
+                returned[i] = produse[i];
+            }
+            return returned;
         }
-        public static ProdusAbstract Contine(string? numep)
+        public static ProdusAbstract? Contine(string? numep)
         {
             for (int i = 0; i < ProduseAbstractMgr.CountElemente; i++)
             {
