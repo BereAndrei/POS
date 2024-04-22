@@ -3,9 +3,9 @@ namespace app1
 {
     public class ServiciuMgr : ProduseAbstractMgr
     {
-    
 
-        
+
+
         public override ProdusAbstract ReadElement(uint id)
         {
             Console.WriteLine("Introdu un serviciu");
@@ -13,23 +13,15 @@ namespace app1
             String? Nume = Console.ReadLine();
             Console.Write("Codul intern:");
             String? CodIntern = Console.ReadLine();
-            Serviciu serv = new Serviciu(id, Nume, CodIntern);
-            return serv;
+            Console.Write("Pretul:");
+            int? Pret = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Categoria:");
+            String? Categorie = Console.ReadLine();
+            return new Serviciu(id, Nume, CodIntern, Pret, Categorie);
         }
 
-        public static Serviciu ReadUnServicu()
-        {
-            Console.WriteLine("Introdu un serviciu");
-            Console.Write("Numele:");
-            String? Nume = Console.ReadLine();
-            Console.Write("Codul intern:");
-            String? CodIntern = Console.ReadLine();
-            Serviciu serv = new Serviciu(0, Nume, CodIntern);
-            return serv;
-        }
-        
 
-        
+        /*
         public void WriteServicii()
         {
             for (uint i = 0; i < ProduseAbstractMgr.CountElemente; i++)
@@ -37,5 +29,6 @@ namespace app1
                 Console.WriteLine(ProduseAbstractMgr.elemente[i]);
             }
         }
+        */
     }
 }
