@@ -44,6 +44,7 @@ namespace entitati
                 ProdusAbstract pr = p as ProdusAbstract;
                 Pret = Pret + pr.Pret;
             }
+            this.Pret = Pret;
         }
         public override string Descriere()
         {

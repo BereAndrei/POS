@@ -64,27 +64,15 @@ namespace app1
 
         }
 
-        public void autoPricePachet(Pachet pac)
-        {
-            int? pret = 0;
-            foreach (IPackageable e in pac.elem_pachet)
-            {
-                if (e.GetType() == typeof(ProdusAbstract))
-                {
-                    ProdusAbstract eleme = (ProdusAbstract)e;
-                    pret += eleme.Pret;
-                }
-            }
-            pac.Pret = pret;
-        }
-
+       
         public List<ProdusAbstract> listaPachete()
         {
             List<ProdusAbstract> ret = new List<ProdusAbstract>();
             foreach (IPackageable p in elemente)
                 if (p.GetType() == typeof(Pachet))
                 {
-                    autoPricePachet(p as Pachet);
+                    Pachet pachetz = (Pachet)p;
+                    pachetz.calculPret();
                     ret.Add(p as Pachet);
                 }
 

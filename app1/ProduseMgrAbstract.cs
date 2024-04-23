@@ -32,6 +32,46 @@ namespace app1
                 string? categorie = nod["Categorie"].InnerText;
                 elemente.Add(new Serviciu((uint)elemente.Count + 1, nume, codIntern, pret, categorie));
             }
+            XmlNodeList lista_noduri3 = doc.SelectNodes("/elemente/Pachet");
+            foreach (XmlNode nod in lista_noduri3)
+            {
+                string? nume = nod["Nume"].InnerText;
+                string? codIntern = nod["CodIntern"].InnerText;
+                int? pret = Convert.ToInt32(nod["Pret"].InnerText);
+                string? categorie = nod["Categorie"].InnerText;
+                Pachet pac = new Pachet((uint)elemente.Count + 1, nume, codIntern, categorie);
+                ProduseMgr produseMgr = new ProduseMgr();
+                ServiciuMgr serviciuMgr = new ServiciuMgr();
+                XmlNodeList prod = doc.SelectNodes("/elemente/Pachet/Produs");
+                
+                foreach (XmlNode n in prod)
+                {
+                    
+                    nume = n["Nume"].InnerText;
+                    codIntern = n["CodIntern"].InnerText;
+                    string? producator = n["Producator"].InnerText;
+                    pret = Convert.ToInt32((n["Pret"].InnerText));
+                    categorie = n["Categorie"].InnerText;
+                    ProdusAbstract ad = new Produs((uint)elemente.Count + 1, nume, codIntern, producator, pret, categorie);
+                    pac.adaugaPachet(ad);
+                }
+                XmlNodeList prod2 = doc.SelectNodes("/elemente/Pachet/Serviciu");
+                foreach (XmlNode n in prod2)
+                {
+                    nume = n["Nume"].InnerText;
+                    codIntern = n["CodIntern"].InnerText;
+                    pret = Convert.ToInt32(n["Pret"].InnerText);
+                    categorie = n["Categorie"].InnerText;
+                    ProdusAbstract ad = new Serviciu((uint)elemente.Count + 1, nume, codIntern, pret, categorie);
+                    pac.adaugaPachet(ad);
+                    
+
+                }
+
+                
+
+                elemente.Add(pac);
+            }
         }
         public bool compareToArray(ProdusAbstract other)
         {

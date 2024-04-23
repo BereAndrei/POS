@@ -23,7 +23,7 @@ namespace app1
             pacheteMgr.ReadElemente(nrPachete);
 
 
-            pacheteMgr.outPachete(pacheteMgr.listaPachete());
+            //pacheteMgr.outPachete(pacheteMgr.listaPachete());
 
             serviciuMgr.ReadElemente(nrServicii);
             serviciuMgr.Write2console();
