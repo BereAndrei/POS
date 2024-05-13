@@ -71,9 +71,8 @@ namespace app1
             foreach (IPackageable p in elemente)
                 if (p.GetType() == typeof(Pachet))
                 {
-                    Pachet pachetz = (Pachet)p;
-                    pachetz.calculPret();
-                    ret.Add(p as Pachet);
+                    ((Pachet)p).calculPret();
+                    ret.Add((Pachet)p);
                 }
 
             ret.Sort((x, y) => Nullable.Compare(x.Pret, y.Pret));
@@ -87,11 +86,10 @@ namespace app1
         }
 
 
-        public void adaugaInPachet(Pachet pac, IPackageable elem)
+        public void adaugaInPachet(Pachet p, IPackageable elem)
         {
-            Pachet eleme = elem as Pachet;
-            eleme.calculPret();
-            pac.adaugaPachet(elem);
+            p.adaugaPachet(elem);
+            ((Pachet)p).calculPret();
         }
 
 

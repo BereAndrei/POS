@@ -42,7 +42,7 @@ namespace app1
                 Pachet pac = new Pachet((uint)elemente.Count + 1, nume, codIntern, categorie);
                 ProduseMgr produseMgr = new ProduseMgr();
                 ServiciuMgr serviciuMgr = new ServiciuMgr();
-                XmlNodeList prod = doc.SelectNodes("/elemente/Pachet/Produs");
+                XmlNodeList prod = nod.SelectNodes("Produs");
                 
                 foreach (XmlNode n in prod)
                 {
@@ -54,8 +54,9 @@ namespace app1
                     categorie = n["Categorie"].InnerText;
                     ProdusAbstract ad = new Produs((uint)elemente.Count + 1, nume, codIntern, producator, pret, categorie);
                     pac.adaugaPachet(ad);
+
                 }
-                XmlNodeList prod2 = doc.SelectNodes("/elemente/Pachet/Serviciu");
+                XmlNodeList prod2 = nod.SelectNodes("Serviciu");
                 foreach (XmlNode n in prod2)
                 {
                     nume = n["Nume"].InnerText;
@@ -64,12 +65,11 @@ namespace app1
                     categorie = n["Categorie"].InnerText;
                     ProdusAbstract ad = new Serviciu((uint)elemente.Count + 1, nume, codIntern, pret, categorie);
                     pac.adaugaPachet(ad);
-                    
 
                 }
 
-                
 
+                pac.calculPret();
                 elemente.Add(pac);
             }
         }

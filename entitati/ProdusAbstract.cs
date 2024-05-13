@@ -9,7 +9,7 @@ namespace entitati
         public string? CodIntern { get; set; }
         public int? Pret { get; set; }
         public string? Categorie { get; set; }
-
+        public ProdusAbstract() { }
         public ProdusAbstract(uint id, string? nume, string? codIntern, int? pret, string? categorie)
         {
             Id = id;
@@ -21,7 +21,7 @@ namespace entitati
         public abstract string Descriere();
         public virtual string AltaDescriere()
         {
-            return this.Nume + "[" + this.CodIntern + "]";
+            return " Nume:" +this.Nume + " Cod Intern:" + this.CodIntern;
         }
 
         public abstract bool compareTo(ProdusAbstract other);

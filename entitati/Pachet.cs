@@ -9,7 +9,7 @@ namespace entitati
     public class Pachet : ProdusAbstract
     {
         public List<IPackageable>? elem_pachet;
-
+        public Pachet() { }
         public Pachet(uint id, string? nume, string? codIntern, string? categorie) : base(id, nume, codIntern, 0, categorie)
         {
             elem_pachet = new List<IPackageable>();
@@ -40,15 +40,13 @@ namespace entitati
         {
             int? Pret = 0;
             foreach (IPackageable p in elem_pachet)
-            {
-                ProdusAbstract pr = p as ProdusAbstract;
-                Pret = Pret + pr.Pret;
-            }
+                Pret = Pret + ((ProdusAbstract)p).Pret;
+            
             this.Pret = Pret;
         }
         public override string Descriere()
         {
-            string ret = "Pachet: " + this.Nume + "[" + this.CodIntern + "]" + " " + this.Pret + " " + this.Categorie; ;
+            string ret = "Pachet: " + " Nume:" + this.Nume + " Cod Intern:" + this.CodIntern + " Pret:" + this.Pret + " Categorie:" + this.Categorie; 
             foreach (IPackageable elem in elem_pachet)
                 ret = ret + "\n    " + elem.ToString();
             return ret;
@@ -56,7 +54,7 @@ namespace entitati
 
         public override string? ToString()
         {
-            string ret = "Pachet: " + this.Nume + "[" + this.CodIntern + "]" + " " + this.Pret + " " + this.Categorie; ;
+            string ret = ret = "Pachet: " + " Nume:" + this.Nume + " Cod Intern:" + this.CodIntern + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
             foreach (IPackageable elem in elem_pachet)
                 ret = ret + "\n    " + elem.ToString();
             return ret;

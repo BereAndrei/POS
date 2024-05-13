@@ -76,5 +76,58 @@
 		</Serviciu>
 		
 	</Pachet>
+	<Pachet>
+		<Nume>Calculator</Nume>
+		<CodIntern>157235</CodIntern>
+		<Pret>2200</Pret>
+		<Categorie>Tehnologia Informatiei</Categorie>
+
+		<Produs>
+			<Nume>Calculator</Nume>
+			<CodIntern>157235</CodIntern>
+			<Producator>USA</Producator>
+			<Pret>2200</Pret>
+			<Categorie>Tehnologia Informatiei</Categorie>
+		</Produs>
+		<Produs>
+			<Nume>Calculator</Nume>
+			<CodIntern>157235</CodIntern>
+			<Producator>USA</Producator>
+			<Pret>2200</Pret>
+			<Categorie>Tehnologia Informatiei</Categorie>
+		</Produs>
+		<Produs>
+			<Nume>Calculator</Nume>
+			<CodIntern>157235</CodIntern>
+			<Producator>USA</Producator>
+			<Pret>2200</Pret>
+			<Categorie>Tehnologia Informatiei</Categorie>
+		</Produs>
+		<Serviciu>
+			<Nume>Calculator</Nume>
+			<CodIntern>157235</CodIntern>
+			<Pret>2200</Pret>
+			<Categorie>Tehnologia Informatiei</Categorie>
+		</Serviciu>
+		<Serviciu>
+			<Nume>Calculator</Nume>
+			<CodIntern>157235</CodIntern>
+			<Pret>2200</Pret>
+			<Categorie>Tehnologia Informatiei</Categorie>
+		</Serviciu>
+		<Serviciu>
+			<Nume>Calculator</Nume>
+			<CodIntern>157235</CodIntern>
+			<Pret>2200</Pret>
+			<Categorie>Tehnologia Informatiei</Categorie>
+		</Serviciu>
+		<Serviciu>
+			<Nume>Calculator</Nume>
+			<CodIntern>157235</CodIntern>
+			<Pret>2200</Pret>
+			<Categorie>Tehnologia Informatieizzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</Categorie>
+		</Serviciu>
+
+	</Pachet>
 	
 </elemente>

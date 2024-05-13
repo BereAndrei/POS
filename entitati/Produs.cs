@@ -3,23 +3,17 @@
     public class Produs : ProdusAbstract
     {
         public string? Producator { get; set; }
-
+        public Produs() { }
         public Produs(uint id, string? nume, string? codIntern, string? producator, int? pret, string? categorie) : base(id, nume, codIntern, pret, categorie)
         {
             Producator = producator;
         }
-        public override string ToString()
-        {
-            return "Produs: " + this.Nume + "[" + this.CodIntern + "]" + this.Producator + " " + this.Pret + " " + this.Categorie;
-        }
-        public override string Descriere()
-        {
-            return "Produs: " + this.Nume + "[" + this.CodIntern + "]" + this.Producator + " " + this.Pret + " " + this.Categorie;
-        }
-        public override string AltaDescriere()
-        {
-            return "Produse: " + base.AltaDescriere() + this.Producator + " " + this.Pret + " " + this.Categorie;
-        }
+        public override string ToString() => "Serviciu: " + " Nume:" + this.Nume + " Cod Intern:" + " Producator:" + this.Producator + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
+        
+        public override string Descriere() => "Serviciu: " + " Nume:" + this.Nume + " Cod Intern:" + " Producator:" + this.Producator + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
+
+        public override string AltaDescriere() => "Produse: " + base.AltaDescriere() + " Producator:" + this.Producator + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
+      
 
         public override bool Equals(object? obj)
         {

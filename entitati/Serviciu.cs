@@ -1,16 +1,19 @@
-﻿namespace entitati
+﻿using System.Xml;
+using System.Xml.Serialization;
+namespace entitati
 {
     public class Serviciu : ProdusAbstract
     {
         public Serviciu(uint id, string? nume, string? codIntern, int? pret, string? categorie) : base(id, nume, codIntern, pret, categorie) { }
-        public override string ToString() => "Serviciu: " + this.Nume + "[" + this.CodIntern + "]" + " " + this.Pret + " " + this.Categorie;
+        public Serviciu() { }
+        public override string ToString() => "Serviciu: " + " Nume:" + this.Nume + " Cod Intern:" + this.CodIntern + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
         public override string Descriere()
         {
-            return "Serviciu: " + this.Nume + "[" + this.CodIntern + "]" + " " + this.Pret + " " + this.Categorie;
+            return "Serviciu: " + " Nume:" + this.Nume + " Cod Intern:" + this.CodIntern + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
         }
         public override string AltaDescriere()
         {
-            return "Serviciu: " + base.AltaDescriere() + " " + this.Pret + " " + this.Categorie;
+            return "Serviciu:" + base.AltaDescriere() + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
         }
 
         public static bool operator ==(Serviciu e1, Serviciu e2)
@@ -48,17 +51,25 @@
         public override bool canAddToPackage(Pachet pachet)
         {
             //max =-1 : no limit
-            //max = most of this element that can fit in one package
+            //max = most # of this element that can fit in one package
             int max = -1;
-            int s = 0;
+            int count = 0;
             foreach (IPackageable e in pachet.elem_pachet)
             {
                 if (e.GetType() == typeof(Serviciu))
-                    s++;
-                if (s == max)
+                    count++;
+                if (count == max)
                     return false;
             }
             return true;
         }
+        public void save2XML(string fileName)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(Serviciu));
+            StreamWriter sw = new StreamWriter(fileName + ".xml");
+            xs.Serialize(sw, this);
+            sw.Close();
+        }
+
     }
 }
