@@ -29,6 +29,8 @@ namespace app1
             serviciuMgr.Write2console();
 
 
+            ICriteriu criteriu = new CriteriuCategorie("Tehnologia Informatiei");
+            serviciuMgr.filtr(criteriu);
 
         }
     }

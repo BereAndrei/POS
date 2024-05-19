@@ -113,6 +113,16 @@ namespace app1
             }
         }
         public abstract ProdusAbstract ReadElement(uint number);
+
+
+        public void filtr(ICriteriu criteriu)
+        {
+            FiltrareCriteriu filtrareCriteriu = new FiltrareCriteriu();
+            Console.WriteLine("Elemente filtrate :");
+            List<ProdusAbstract> ret = filtrareCriteriu.Filtrare(elemente, criteriu);
+            foreach (ProdusAbstract element in ret)
+                Console.WriteLine(element);
+        }
         /*
            public static ProdusAbstract[] Continee(ProdusAbstract other)
            {

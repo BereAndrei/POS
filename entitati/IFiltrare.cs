@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace entitati
 {
-    internal interface IFiltrare
+    public interface IFiltrare
     {
 
-        public Object Filtrare();
+        public List<ProdusAbstract> Filtrare(List<ProdusAbstract> elemente, ICriteriu criteriu);
     }
 }

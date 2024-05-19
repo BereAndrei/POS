@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace entitati
 {
-    internal interface CriteriuCategorie : ICriteriu
+    public class CriteriuCategorie : ICriteriu
     {
-        string Categorie { get; set;  }
+        String? Categorie {  get;  }
+        public CriteriuCategorie(string? categorie)
+        {
+            Categorie = categorie;
+        }
+        public bool IsIndeplinit(ProdusAbstract element)
+        {
+            if(element.Categorie == Categorie)
+                return true;
+            return false;
+        }
     }
 }

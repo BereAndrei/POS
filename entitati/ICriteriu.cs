@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace entitati
 {
-    internal interface ICriteriu
+    public interface ICriteriu
     {
 
-        public bool IsIndeplinit() {  return false; }
+        public bool IsIndeplinit(ProdusAbstract element);
 
 
     }
