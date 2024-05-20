@@ -8,17 +8,17 @@ namespace entitati
 {
     public class Pachet : ProdusAbstract
     {
-        public List<IPackageable>? elem_pachet;
+        public List<ProdusAbstract>? elem_pachet;
         public Pachet() { }
         public Pachet(uint id, string? nume, string? codIntern, string? categorie) : base(id, nume, codIntern, 0, categorie)
         {
-            elem_pachet = new List<IPackageable>();
+            elem_pachet = new List<ProdusAbstract>();
         }
 
         public void adaugaPachet(IPackageable elem)
         {
             if (elem.canAddToPackage(this))
-                elem_pachet.Add(elem);
+                elem_pachet.Add((ProdusAbstract)elem);
         }
 
         public override bool canAddToPackage(Pachet pachet)

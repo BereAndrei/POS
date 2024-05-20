@@ -1,7 +1,11 @@
 ﻿using System.Reflection.Metadata.Ecma335;
+using System.Xml.Serialization;
 
 namespace entitati
 {
+    [XmlInclude(typeof(Produs))]
+    [XmlInclude(typeof(Pachet))]
+    [XmlInclude(typeof(Serviciu))]
     public abstract class ProdusAbstract : IPackageable
     {
         public uint Id { get; set; }
@@ -26,5 +30,12 @@ namespace entitati
 
         public abstract bool compareTo(ProdusAbstract other);
         public virtual bool canAddToPackage(Pachet pachet) => false;
+
+        public void add2xml(XmlSerializer xs, StreamWriter sw)
+        {
+            
+            xs.Serialize(sw, this);
+            
+        }
     }
 }

@@ -1,78 +1,16 @@
 ﻿using entitati;
 using System.Collections.Generic;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace app1
 {
     public abstract class ProduseAbstractMgr
     {
-        protected static List<ProdusAbstract> elemente = new List<ProdusAbstract>();
+        public static List<ProdusAbstract> elemente = new List<ProdusAbstract>();
+
         public ProduseAbstractMgr() { }
-        public static void InitListafromXML()
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.Load("..\\..\\..\\Elemente.xml");
-            XmlNodeList lista_noduri = doc.SelectNodes("/elemente/Produs");
-            foreach (XmlNode nod in lista_noduri)
-            {
-                string? nume = nod["Nume"].InnerText;
-                string? codIntern = nod["CodIntern"].InnerText;
-                string? producator = nod["Producator"].InnerText;
-                int? pret = Convert.ToInt32((nod["Pret"].InnerText));
-                string? categorie = nod["Categorie"].InnerText;
-                elemente.Add(new Produs((uint)elemente.Count + 1, nume, codIntern,
-                producator, pret, categorie));
-            }
-            XmlNodeList lista_noduri2 = doc.SelectNodes("/elemente/Serviciu");
-            foreach (XmlNode nod in lista_noduri2)
-            {
-                string? nume = nod["Nume"].InnerText;
-                string? codIntern = nod["CodIntern"].InnerText;
-                int? pret = Convert.ToInt32(nod["Pret"].InnerText);
-                string? categorie = nod["Categorie"].InnerText;
-                elemente.Add(new Serviciu((uint)elemente.Count + 1, nume, codIntern, pret, categorie));
-            }
-            XmlNodeList lista_noduri3 = doc.SelectNodes("/elemente/Pachet");
-            foreach (XmlNode nod in lista_noduri3)
-            {
-                string? nume = nod["Nume"].InnerText;
-                string? codIntern = nod["CodIntern"].InnerText;
-                int? pret = Convert.ToInt32(nod["Pret"].InnerText);
-                string? categorie = nod["Categorie"].InnerText;
-                Pachet pac = new Pachet((uint)elemente.Count + 1, nume, codIntern, categorie);
-                ProduseMgr produseMgr = new ProduseMgr();
-                ServiciuMgr serviciuMgr = new ServiciuMgr();
-                XmlNodeList prod = nod.SelectNodes("Produs");
-                
-                foreach (XmlNode n in prod)
-                {
-                    
-                    nume = n["Nume"].InnerText;
-                    codIntern = n["CodIntern"].InnerText;
-                    string? producator = n["Producator"].InnerText;
-                    pret = Convert.ToInt32((n["Pret"].InnerText));
-                    categorie = n["Categorie"].InnerText;
-                    ProdusAbstract ad = new Produs((uint)elemente.Count + 1, nume, codIntern, producator, pret, categorie);
-                    pac.adaugaPachet(ad);
-
-                }
-                XmlNodeList prod2 = nod.SelectNodes("Serviciu");
-                foreach (XmlNode n in prod2)
-                {
-                    nume = n["Nume"].InnerText;
-                    codIntern = n["CodIntern"].InnerText;
-                    pret = Convert.ToInt32(n["Pret"].InnerText);
-                    categorie = n["Categorie"].InnerText;
-                    ProdusAbstract ad = new Serviciu((uint)elemente.Count + 1, nume, codIntern, pret, categorie);
-                    pac.adaugaPachet(ad);
-
-                }
-
-
-                pac.calculPret();
-                elemente.Add(pac);
-            }
-        }
+        
         public bool compareToArray(ProdusAbstract other)
         {
             foreach (ProdusAbstract element in elemente)
@@ -123,30 +61,51 @@ namespace app1
             foreach (ProdusAbstract element in ret)
                 Console.WriteLine(element);
         }
-        /*
-           public static ProdusAbstract[] Continee(ProdusAbstract other)
-           {
-               ProdusAbstract[] produse = new ProdusAbstract[100];
-               int counter = 0;
-               for (int i = 0; i < ProduseAbstractMgr.CountElemente; i++)
-                   {
-                       if (ProduseAbstractMgr.elemente[i].Equals(other))
-                       {
-                       produse[counter] = elemente[i];
-                       counter++;
-                       }
-                   }
-               return produse;
-           }
-           public static ProdusAbstract Contine(string? numep)
-           {
-               for (int i = 0; i < ProduseAbstractMgr.CountElemente; i++)
+
+        public void save2xml(string? filename)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(List<ProdusAbstract>));
+            StreamWriter sw = new StreamWriter(filename + ".xml");
+            xs.Serialize(sw, elemente);
+            sw.Close();
+        }
+
+        public static void InitListafromXML2(string? filename)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(List<ProdusAbstract>));
+            FileStream xr = new FileStream(filename + ".xml", FileMode.Open);
+            XmlReader reader = new XmlTextReader(xr);
+            elemente = (List<ProdusAbstract>)xs.Deserialize(reader);
+            
+            xr.Close();
+
+        }
+
+
+            /*
+               public static ProdusAbstract[] Continee(ProdusAbstract other)
                {
-                   if (ProduseAbstractMgr.elemente[i].Nume == numep)
-                       return elemente[i];
+                   ProdusAbstract[] produse = new ProdusAbstract[100];
+                   int counter = 0;
+                   for (int i = 0; i < ProduseAbstractMgr.CountElemente; i++)
+                       {
+                           if (ProduseAbstractMgr.elemente[i].Equals(other))
+                           {
+                           produse[counter] = elemente[i];
+                           counter++;
+                           }
+                       }
+                   return produse;
                }
-               return null;
-           }
-        */
-    }
+               public static ProdusAbstract Contine(string? numep)
+               {
+                   for (int i = 0; i < ProduseAbstractMgr.CountElemente; i++)
+                   {
+                       if (ProduseAbstractMgr.elemente[i].Nume == numep)
+                           return elemente[i];
+                   }
+                   return null;
+               }
+            */
+        }
 }

@@ -2,6 +2,7 @@
 using System.Xml.Serialization;
 namespace entitati
 {
+    [Serializable]
     public class Serviciu : ProdusAbstract
     {
         public Serviciu(uint id, string? nume, string? codIntern, int? pret, string? categorie) : base(id, nume, codIntern, pret, categorie) { }
@@ -63,13 +64,7 @@ namespace entitati
             }
             return true;
         }
-        public void save2XML(string fileName)
-        {
-            XmlSerializer xs = new XmlSerializer(typeof(Serviciu));
-            StreamWriter sw = new StreamWriter(fileName + ".xml");
-            xs.Serialize(sw, this);
-            sw.Close();
-        }
+        
 
     }
 }

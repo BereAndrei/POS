@@ -8,11 +8,11 @@
         {
             Producator = producator;
         }
-        public override string ToString() => "Serviciu: " + " Nume:" + this.Nume + " Cod Intern:" + " Producator:" + this.Producator + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
+        public override string ToString() => "Produs: " + " Nume:" + this.Nume + " Cod Intern:" + " Producator:" + this.Producator + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
         
-        public override string Descriere() => "Serviciu: " + " Nume:" + this.Nume + " Cod Intern:" + " Producator:" + this.Producator + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
+        public override string Descriere() => "Produs: " + " Nume:" + this.Nume + " Cod Intern:" + " Producator:" + this.Producator + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
 
-        public override string AltaDescriere() => "Produse: " + base.AltaDescriere() + " Producator:" + this.Producator + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
+        public override string AltaDescriere() => "Produs: " + base.AltaDescriere() + " Producator:" + this.Producator + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
       
 
         public override bool Equals(object? obj)
