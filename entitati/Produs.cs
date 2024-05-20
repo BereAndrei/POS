@@ -49,18 +49,16 @@
 
         public override bool canAddToPackage(Pachet pachet)
         {
-            //max =-1 : no limit
-            //max = most of this element that can fit in one package
-            int max = 1;
-            int p = 0;
+            int count = 0;
             foreach (IPackageable e in pachet.elem_pachet)
             {
-                if (e.GetType() == typeof(Produs))
-                    p++;
-                if (p == max)
+                if (e.GetType() == typeof(Serviciu))
+                    count++;
+                if (count == Pachet.MaxProduse)
                     return false;
             }
             return true;
         }
+
     }
 }

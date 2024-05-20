@@ -9,7 +9,10 @@ namespace entitati
     public class Pachet : ProdusAbstract
     {
         public List<ProdusAbstract>? elem_pachet;
-        public Pachet() { }
+        public static int MaxProduse { get; set; } = -1;
+        public static int MaxServicii { get; set; } = -1;
+
+     public Pachet() { }
         public Pachet(uint id, string? nume, string? codIntern, string? categorie) : base(id, nume, codIntern, 0, categorie)
         {
             elem_pachet = new List<ProdusAbstract>();

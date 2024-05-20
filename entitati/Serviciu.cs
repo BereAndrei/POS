@@ -51,15 +51,12 @@ namespace entitati
 
         public override bool canAddToPackage(Pachet pachet)
         {
-            //max =-1 : no limit
-            //max = most # of this element that can fit in one package
-            int max = -1;
             int count = 0;
             foreach (IPackageable e in pachet.elem_pachet)
             {
                 if (e.GetType() == typeof(Serviciu))
                     count++;
-                if (count == max)
+                if (count == Pachet.MaxServicii)
                     return false;
             }
             return true;

@@ -5,6 +5,8 @@ namespace app1
     {
         static void Main(string[] args)
         {
+            Pachet.MaxProduse = 3;
+            Pachet.MaxServicii = 1;
             String? FISIER_SALVARE = "salvat_arr";
             ProduseMgr produseMgr = new ProduseMgr();
             ServiciuMgr serviciuMgr = new ServiciuMgr();
