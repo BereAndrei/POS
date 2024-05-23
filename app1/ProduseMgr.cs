@@ -3,8 +3,6 @@ namespace app1
 {
     public class ProduseMgr : ProduseAbstractMgr
     {
-
-
         public override ProdusAbstract ReadElement(uint id)
         {
             Console.WriteLine("Introdu un produs");
@@ -21,17 +19,5 @@ namespace app1
             Produs prod = new Produs(id, Nume, CodIntern, Producator, Pret, Categorie);
             return prod;
         }
-
-
-        /*
-        public void WriteProduse()
-        {
-            for(uint i = 0; i < ProduseAbstractMgr.CountElemente; i++)
-            {
-                Console.WriteLine(elemente[i]);
-            }
-        }
-
-        */
     }
 }

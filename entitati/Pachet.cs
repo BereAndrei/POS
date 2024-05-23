@@ -9,26 +9,18 @@ namespace entitati
     public class Pachet : ProdusAbstract
     {
         public List<ProdusAbstract>? elem_pachet;
-        public static int MaxProduse { get; set; } = -1;
-        public static int MaxServicii { get; set; } = -1;
 
      public Pachet() { }
         public Pachet(uint id, string? nume, string? codIntern, string? categorie) : base(id, nume, codIntern, 0, categorie)
         {
             elem_pachet = new List<ProdusAbstract>();
         }
-
         public void adaugaPachet(IPackageable elem)
         {
             if (elem.canAddToPackage(this))
                 elem_pachet.Add((ProdusAbstract)elem);
         }
-
-        public override bool canAddToPackage(Pachet pachet)
-        {
-            return base.canAddToPackage(pachet);
-        }
-
+        public override bool canAddToPackage(Pachet pachet) => base.canAddToPackage(pachet);
         public override bool compareTo(ProdusAbstract other)
         {
             {
@@ -38,7 +30,6 @@ namespace entitati
                 return false;
             }
         }
-
         public void calculPret()
         {
             int? Pret = 0;
@@ -54,7 +45,6 @@ namespace entitati
                 ret = ret + "\n    " + elem.ToString();
             return ret;
         }
-
         public override string? ToString()
         {
             string ret = ret = "Pachet: " + " Nume:" + this.Nume + " Cod Intern:" + this.CodIntern + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
@@ -63,7 +53,4 @@ namespace entitati
             return ret;
         }
     }
-
-
-
 }

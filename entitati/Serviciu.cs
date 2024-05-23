@@ -2,20 +2,15 @@
 using System.Xml.Serialization;
 namespace entitati
 {
-    [Serializable]
     public class Serviciu : ProdusAbstract
     {
-        public Serviciu(uint id, string? nume, string? codIntern, int? pret, string? categorie) : base(id, nume, codIntern, pret, categorie) { }
+        public static int MaxPachet { get; set; } = -1;
         public Serviciu() { }
+        public Serviciu(uint id, string? nume, string? codIntern, int? pret, string? categorie) : base(id, nume, codIntern, pret, categorie) { }
         public override string ToString() => "Serviciu: " + " Nume:" + this.Nume + " Cod Intern:" + this.CodIntern + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
-        public override string Descriere()
-        {
-            return "Serviciu: " + " Nume:" + this.Nume + " Cod Intern:" + this.CodIntern + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
-        }
-        public override string AltaDescriere()
-        {
-            return "Serviciu:" + base.AltaDescriere() + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
-        }
+        public override string Descriere() => "Serviciu: " + " Nume:" + this.Nume + " Cod Intern:" + this.CodIntern + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
+        public override string AltaDescriere() => "Serviciu:" + base.AltaDescriere() + " Pret:" + this.Pret + " Categorie:" + this.Categorie;
+        
 
         public static bool operator ==(Serviciu e1, Serviciu e2)
         {
@@ -23,14 +18,12 @@ namespace entitati
                 return true;
             return false;
         }
-
         public static bool operator !=(Serviciu e1, Serviciu e2)
         {
             if (!(e1.Nume == e2.Nume && e1.CodIntern == e2.CodIntern))
                 return true;
             return false;
         }
-
         public override bool Equals(object? obj)
         {
             if (this.GetType() == obj.GetType())
@@ -48,7 +41,6 @@ namespace entitati
                     return true;
             return false;
         }
-
         public override bool canAddToPackage(Pachet pachet)
         {
             int count = 0;
@@ -56,7 +48,7 @@ namespace entitati
             {
                 if (e.GetType() == typeof(Serviciu))
                     count++;
-                if (count == Pachet.MaxServicii)
+                if (count == Serviciu.MaxPachet)
                     return false;
             }
             return true;

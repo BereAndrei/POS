@@ -2,6 +2,7 @@
 {
     public class Produs : ProdusAbstract
     {
+        public static int MaxPachet { get; set; } = -1;
         public string? Producator { get; set; }
         public Produs() { }
         public Produs(uint id, string? nume, string? codIntern, string? producator, int? pret, string? categorie) : base(id, nume, codIntern, pret, categorie)
@@ -52,9 +53,9 @@
             int count = 0;
             foreach (IPackageable e in pachet.elem_pachet)
             {
-                if (e.GetType() == typeof(Serviciu))
+                if (e.GetType() == typeof(Produs))
                     count++;
-                if (count == Pachet.MaxProduse)
+                if (count == Produs.MaxPachet)
                     return false;
             }
             return true;

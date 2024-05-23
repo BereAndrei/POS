@@ -23,19 +23,9 @@ namespace entitati
             Categorie = categorie;
         }
         public abstract string Descriere();
-        public virtual string AltaDescriere()
-        {
-            return " Nume:" +this.Nume + " Cod Intern:" + this.CodIntern;
-        }
-
+        public virtual string AltaDescriere() => " Nume:" +this.Nume + " Cod Intern:" + this.CodIntern;
         public abstract bool compareTo(ProdusAbstract other);
         public virtual bool canAddToPackage(Pachet pachet) => false;
 
-        public void add2xml(XmlSerializer xs, StreamWriter sw)
-        {
-            
-            xs.Serialize(sw, this);
-            
-        }
     }
 }

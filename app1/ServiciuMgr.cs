@@ -3,9 +3,6 @@ namespace app1
 {
     public class ServiciuMgr : ProduseAbstractMgr
     {
-
-
-
         public override ProdusAbstract ReadElement(uint id)
         {
             Console.WriteLine("Introdu un serviciu");
@@ -19,16 +16,5 @@ namespace app1
             String? Categorie = Console.ReadLine();
             return new Serviciu(id, Nume, CodIntern, Pret, Categorie);
         }
-
-
-        /*
-        public void WriteServicii()
-        {
-            for (uint i = 0; i < ProduseAbstractMgr.CountElemente; i++)
-            {
-                Console.WriteLine(ProduseAbstractMgr.elemente[i]);
-            }
-        }
-        */
     }
 }

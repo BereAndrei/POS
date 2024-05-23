@@ -79,13 +79,6 @@ namespace app1
             return ret;
         }
 
-        public void outPachete(List<ProdusAbstract> l)
-        {
-            foreach (ProdusAbstract p in l)
-                Console.WriteLine(p.ToString());
-        }
-
-
         public void adaugaInPachet(Pachet p, IPackageable elem)
         {
             p.adaugaPachet(elem);
